@@ -4,7 +4,7 @@ This Flutter package provides a convenient way to interact with the [Greip API](
 
 [Report Issue](https://github.com/Greipio/flutter/issues/new)
 ·
-[Request Feature](https://github.com/Greipio/flutter/discussions/new)
+[Request Feature](https://github.com/Greipio/flutter/discussions/new?category=ideas)
 ·
 [Greip Website](https://greip.io/)
 ·
