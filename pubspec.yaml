@@ -1,6 +1,6 @@
 name: greip
 description: "The official Flutter package for the Greip API simplifies the integration of Greip services into Flutter applications."
-version: 1.0.1
+version: 1.0.2
 homepage: "https://greip.io/"
 repository: "https://github.com/Greipio/flutter"
 issue_tracker: "https://github.com/Greipio/flutter/issues"
@@ -22,7 +22,7 @@ topics:
   - iban
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.3.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:

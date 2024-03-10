@@ -1,4 +1,5 @@
 .git
+.github
 .dart_tool
 .vscode
 build

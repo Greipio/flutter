@@ -29,10 +29,11 @@ To use the package in your Flutter project, just add it as a dependency in your 
 
 ```yaml
 dependencies:
-  greip: ^1.0.0
+  greip: ^1.0.2
 ```
 
 Then, run the following command to install the package:
+
 ```dart
 flutter pub get
 ```
@@ -60,6 +61,7 @@ Before making any API requests, you need to set your API token (API Key) using t
 ```dart
 greip.setToken('your-greip-token');
 ```
+
 Replace `your-greip-token` with your actual [Greip API key](https://docs.greip.io/dashboard-guides/account-management/obtaining-api-key).
 
 That's it 🥳, now you're ready to start using the package methods.
@@ -197,8 +199,6 @@ try {
 This method provides an additional layer of validation for your system. While validating email syntax is important, it is not sufficient.
 
 This method goes beyond syntax validation by checking the domain’s validity, the availability of the Mail Service, detecting Disposable Email (Temporary Emails), etc. By utilising this method, you can ensure a more thorough validation process for email addresses.
-
-
 
 ```dart
 import 'package:greip/src/enums/mode.dart';
