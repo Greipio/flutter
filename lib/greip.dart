@@ -5,10 +5,14 @@ import 'package:greip/src/enums/mode.dart';
 import 'package:greip/src/enums/param.dart';
 import 'package:greip/src/helpers/api_service.dart';
 
+// The main class of the package
 class Greip {
+  // Greip API's base URL
   String baseUrl = "https://gregeoip.com";
+  // Initialize the API Token
   String? token;
 
+  /// Greip Constructor
   Greip({this.token});
 
   /// Sets the API Token so you can use the package methods.
@@ -372,8 +376,8 @@ class Greip {
   ///
   /// See [Free Get-IP API Reference](https://docs.greip.io/api-reference/endpoint/ip-geolocation/free-get-ip-method)
   Future<Map<String, dynamic>> ip() async {
-    return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/ip'), token: '');
+    return APIService.instance
+        .getMethod(uri: Uri.parse('$baseUrl/ip'), token: '');
   }
 
   /// IP Lookup Method

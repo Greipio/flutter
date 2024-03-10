@@ -81,7 +81,8 @@ void main() {
         "customer_dob": '1997-19-05',
         "customer_email": 'name@domain.com',
         "customer_2fa": true,
-        "customer_useragent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        "customer_useragent":
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         "shipping_country": 'GB',
         "shipping_region": 'London',
         "shipping_city": 'London',
@@ -104,7 +105,7 @@ void main() {
         "card_expiry": '29/05',
         "cvv_result": true,
       };
-      final result = await greip.paymentFraud(data , mode: Mode.live);
+      final result = await greip.paymentFraud(data, mode: Mode.live);
       expect(result['status'], equals('success'));
     });
 
@@ -119,7 +120,7 @@ void main() {
     });
 
     test('IP Lookup Test', () async {
-      final result = await greip.ipLookup("1.1.1.1" , params: [
+      final result = await greip.ipLookup("1.1.1.1", params: [
         Param.security,
         Param.currency,
         Param.timezone,
@@ -129,7 +130,7 @@ void main() {
     });
 
     test('Bulk IP Lookup Test', () async {
-      final result = await greip.bulkLookup(["1.1.1.1" , "2.2.2.2"]);
+      final result = await greip.bulkLookup(["1.1.1.1", "2.2.2.2"]);
       expect(result['status'], equals('success'));
     });
   });

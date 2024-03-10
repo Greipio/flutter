@@ -78,7 +78,8 @@ class ExceptionHandler {
       case 123:
         return InvalidUseridException();
       default:
-        return CustomException(code, 'unknown_error', 'Unknown error occurred.');
+        return CustomException(
+            code, 'unknown_error', 'Unknown error occurred.');
     }
   }
 }
