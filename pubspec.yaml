@@ -15,17 +15,10 @@ platforms:
   windows:
 
 topics:
-  - greip
   - api
   - flutter
-  - dart
-  - ip
   - geo-location
-  - geoip
-  - fraud-prevention
-  - abuse
   - ai
-  - asn
   - iban
 
 environment:
