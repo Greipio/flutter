@@ -8,7 +8,7 @@ import 'package:greip/src/helpers/api_service.dart';
 // The main class of the package
 class Greip {
   // Greip API's base URL
-  String baseUrl = "https://gregeoip.com";
+  String baseUrl = "https://greipapi.com";
   // Initialize the API Token
   String? token;
 
@@ -433,6 +433,48 @@ class Greip {
 
     return APIService.instance.getMethod(
         uri: Uri.parse('$baseUrl/IPLookup'), token: token!, query: localParams);
+  }
+
+  /// IP Threats Method
+  ///
+  /// Retrieves threat intelligence information associated with a given IP address.
+  ///
+  /// Parameters:
+  ///   - [ip]: The IP address you want to retrieve it’s threat intelligence information.
+  ///   - [mode]: You pass `test` to this variable, so your account plan will not be affected while integrating the package will return fake information. You can set it to `live` again to back to the production mode.
+  ///
+  /// Returns:
+  ///   A Map representing the threat intelligence information for the given IP address.
+  ///   For successful lookup, the map will contain the threat intelligence information of the given IP address.
+  ///   For unsuccessful lookup, the map will contain error details.
+  ///
+  /// See [IP Geolocation API Reference](https://docs.greip.io/api-reference/endpoint/ip-geolocation/ip-lookup)
+  Future<Map<String, dynamic>> threats(
+    String ip, {
+    Mode mode = Mode.live,
+  }) async {
+    assert(token != null);
+
+    ip = ip.toUpperCase();
+
+    if (ip.isEmpty) {
+      throw Exception(
+          'The ip parameter is required. You passed an empty value.');
+    }
+
+    if (!Mode.values.contains(mode)) {
+      throw Exception(
+          'The mode you specified ($mode) is unknown. You should use `live` or `test`.');
+    }
+
+    final localParams = {
+      'ip': ip,
+      'mode': mode.value.toLowerCase(),
+      'source': 'Flutter-SDK',
+    };
+
+    return APIService.instance.getMethod(
+        uri: Uri.parse('$baseUrl/threats'), token: token!, query: localParams);
   }
 
   /// Country Lookup Method

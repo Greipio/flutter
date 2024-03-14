@@ -19,7 +19,7 @@ This Flutter package provides a convenient way to interact with the [Greip API](
 &nbsp;
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/license/apache-2-0)
 &nbsp;
-![API Status](https://img.shields.io/website?down_color=orange&down_message=down&label=API%20status&up_color=green&up_message=up&url=https%3A%2F%2Fgregeoip.com)
+![API Status](https://img.shields.io/website?down_color=orange&down_message=down&label=API%20status&up_color=green&up_message=up&url=https%3A%2F%2Fgreipapi.com)
 
 ---
 
@@ -29,7 +29,7 @@ To use the package in your Flutter project, just add it as a dependency in your 
 
 ```yaml
 dependencies:
-  greip: ^1.0.2
+  greip: ^1.1.0
 ```
 
 Then, run the following command to install the package:

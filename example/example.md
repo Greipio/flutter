@@ -8,7 +8,7 @@ This example demonstrates how to use the Greip package in a Flutter application.
 
    ```yaml
    dependencies:
-     greip: ^1.0.2
+     greip: ^1.1.0
    ```
 
 2. Import the Greip package in your Dart code:

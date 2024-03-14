@@ -1,6 +1,6 @@
 name: greip
 description: "The official Flutter package for the Greip API simplifies the integration of Greip services into Flutter applications."
-version: 1.0.2
+version: 1.1.0
 homepage: "https://greip.io/"
 repository: "https://github.com/Greipio/flutter"
 issue_tracker: "https://github.com/Greipio/flutter/issues"

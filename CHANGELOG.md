@@ -1,3 +1,8 @@
+## 1.1.0
+
+- BaseURL changed from `gregeoip.com` to `greipapi.com`
+- New method added (IP Threats)
+
 ## 1.0.2
 
 - Example added to the package
