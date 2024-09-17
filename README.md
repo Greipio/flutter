@@ -333,7 +333,3 @@ Contributions are welcome! If you encounter any issues or have suggestions for i
 ## Repo Activity
 
 ![Alt](https://repobeats.axiom.co/api/embed/3c45923f0f6ff7f75cb66bfcbdc0b7f94f221dc6.svg "Repobeats analytics image")
-
-## Repo Activity
-
-![Alt](https://repobeats.axiom.co/api/embed/3c45923f0f6ff7f75cb66bfcbdc0b7f94f221dc6.svg "Repobeats analytics image")
