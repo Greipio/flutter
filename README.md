@@ -329,3 +329,7 @@ You can find the full guide of this package by visiting our [documentation page]
 ## Contributing
 
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
+
+## Repo Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/3c45923f0f6ff7f75cb66bfcbdc0b7f94f221dc6.svg "Repobeats analytics image")
