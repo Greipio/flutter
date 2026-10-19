@@ -9,37 +9,41 @@ void main() {
 
     setUp(() {
       greip = Greip();
-      greip.setToken('your-api-token');
+      const token = String.fromEnvironment('GREIP_TOKEN');
+      if (token.isEmpty) {
+        throw StateError('Set GREIP_TOKEN via --dart-define=GREIP_TOKEN=...');
+      }
+      greip.setToken(token);
     });
 
     test('Free-IP Test', () async {
       final result = await greip.ip();
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('Email Validation Test', () async {
       final result = await greip.validateEmail('name@domain.com');
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('IP Geolocation Test', () async {
       final result = await greip.geoIp();
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('Phone Validation Test', () async {
       final result = await greip.validatePhone('1234567890', 'TR');
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('IBAN Validation Test', () async {
       final result = await greip.validateIban('DE89370400440532013000');
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('Profanity Detection Test', () async {
       final result = await greip.profanity('This is a test message');
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('Payment Fraud Prevention Test', () async {
@@ -106,17 +110,23 @@ void main() {
         "cvv_result": true,
       };
       final result = await greip.paymentFraud(data, mode: Mode.live);
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('Country Lookup Test', () async {
       final result = await greip.countryLookup('PS');
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('ASN Lookup Test', () async {
-      final result = await greip.asnLookup('AS12345');
-      expect(result['status'], equals('success'));
+      final result = await greip.asnLookup('AS13335');
+      expect(result['success'], equals(true));
+    });
+
+    test('IP Threats Test', () async {
+      final result = await greip.threats('1.1.1.1');
+      expect(result['success'], equals(true));
+      expect(result['data'], isNotNull);
     });
 
     test('IP Lookup Test', () async {
@@ -126,12 +136,12 @@ void main() {
         Param.timezone,
         Param.location,
       ]);
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
 
     test('Bulk IP Lookup Test', () async {
       final result = await greip.bulkLookup(["1.1.1.1", "2.2.2.2"]);
-      expect(result['status'], equals('success'));
+      expect(result['success'], equals(true));
     });
   });
 }

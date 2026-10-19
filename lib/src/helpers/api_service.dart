@@ -25,7 +25,7 @@ class APIService {
       headers: headers,
     );
     Map<String, dynamic> decodedResponse = jsonDecode(response.body);
-    if (response.statusCode == 200 && decodedResponse['status'] == 'success') {
+    if (response.statusCode == 200 && decodedResponse['success'] == true) {
       return decodedResponse;
     } else {
       if (decodedResponse.containsKey("code")) {
@@ -53,7 +53,7 @@ class APIService {
       body: jsonEncode(data),
     );
     Map<String, dynamic> decodedResponse = jsonDecode(response.body);
-    if (response.statusCode == 200 && decodedResponse['status'] == 'success') {
+    if (response.statusCode == 200 && decodedResponse['success'] == true) {
       return decodedResponse;
     } else {
       if (decodedResponse.containsKey("code")) {

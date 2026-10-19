@@ -29,7 +29,7 @@ To use the package in your Flutter project, just add it as a dependency in your 
 
 ```yaml
 dependencies:
-  greip: ^1.1.0   # use the latest pub release; v2 API support ships in 2.x (see below)
+  greip: ^1.1.0 # use the latest pub release; v2 API support ships in 2.x (see below)
 ```
 
 Then run:

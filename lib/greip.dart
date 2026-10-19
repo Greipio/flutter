@@ -8,7 +8,7 @@ import 'package:greip/src/helpers/api_service.dart';
 // The main class of the package
 class Greip {
   // Greip API's base URL
-  String baseUrl = "https://greipapi.com";
+  String baseUrl = "https://v2.greipapi.com";
   // Initialize the API Token
   String? token;
 
@@ -56,13 +56,12 @@ class Greip {
 
     // Prepare request parameters
     final Map<String, dynamic> localParams = {
-      'email': email,
-      'userID': userID,
+      if (userID != null) 'user_id': userID,
       'mode': mode.value,
       'source': 'Flutter-SDK',
     };
 
-    var uri = Uri.parse('$baseUrl/validateEmail');
+    var uri = Uri.parse('$baseUrl/score/email/${Uri.encodeComponent(email)}');
 
     return APIService.instance
         .getMethod(uri: uri, token: token!, query: localParams);
@@ -111,15 +110,14 @@ class Greip {
     }
 
     final Map<String, dynamic> localParams = {
-      'phone': phone,
-      'countryCode': countryCode,
-      'userID': userID,
+      'country_code': countryCode,
+      if (userID != null) 'user_id': userID,
       'mode': mode.value,
       'source': 'Flutter-SDK',
     };
 
     return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/validatePhone'),
+        uri: Uri.parse('$baseUrl/score/phone/${Uri.encodeComponent(phone)}'),
         token: token!,
         query: localParams);
   }
@@ -159,14 +157,13 @@ class Greip {
     }
 
     final Map<String, dynamic> localParams = {
-      'iban': iban,
-      'userID': userID,
+      if (userID != null) 'user_id': userID,
       'mode': mode.value,
       'source': 'Flutter-SDK',
     };
 
     return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/validateIBAN'),
+        uri: Uri.parse('$baseUrl/lookup/iban/${Uri.encodeComponent(iban)}'),
         token: token!,
         query: localParams);
   }
@@ -208,7 +205,7 @@ class Greip {
     final tempParams = params.map((param) => param.value).toList();
     final tempParamsString = tempParams.join(',');
     final localParams = {
-      'ips': ips,
+      'ips': ips.join(','),
       'lang': lang.value.toUpperCase(),
       'params': tempParamsString,
       'mode': mode.value.toLowerCase(),
@@ -216,7 +213,7 @@ class Greip {
     };
 
     return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/BulkLookup'),
+        uri: Uri.parse('$baseUrl/geo/ip/bulk'),
         token: token!,
         query: localParams);
   }
@@ -257,17 +254,17 @@ class Greip {
           'The mode you specified ($mode) is unknown. You should use `live` or `test`.');
     }
 
-    final Map<String, dynamic> localParams = {
+    final Map<String, dynamic> body = {
       'text': text,
-      'listBadWords': listBadWords ? 'yes' : 'no',
-      'scoreOnly': scoreOnly ? 'yes' : 'no',
-      'userID': userID,
+      if (userID != null) 'user_id': userID,
       'mode': mode.value,
       'source': 'Flutter-SDK',
     };
 
-    return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/badWords'), token: token!, query: localParams);
+    return APIService.instance.postMethod(
+        uri: Uri.parse('$baseUrl/score/text'),
+        token: token!,
+        data: body);
   }
 
   /// Payment Fraud Prevention Method
@@ -307,7 +304,7 @@ class Greip {
     };
 
     return APIService.instance.postMethod(
-        uri: Uri.parse('$baseUrl/paymentFraud'),
+        uri: Uri.parse('$baseUrl/score/payments'),
         token: token!,
         data: localParams);
   }
@@ -362,7 +359,7 @@ class Greip {
     };
 
     return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/GeoIP'), token: token!, query: localParams);
+        uri: Uri.parse('$baseUrl/geo/ip'), token: token!, query: localParams);
   }
 
   /// Free Get-IP Method
@@ -424,7 +421,6 @@ class Greip {
     }
 
     final localParams = {
-      'ip': ip,
       'lang': lang.value.toUpperCase(),
       'params': tempParamsString,
       'mode': mode.value.toLowerCase(),
@@ -432,7 +428,9 @@ class Greip {
     };
 
     return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/IPLookup'), token: token!, query: localParams);
+        uri: Uri.parse('$baseUrl/lookup/ip/${Uri.encodeComponent(ip)}'),
+        token: token!,
+        query: localParams);
   }
 
   /// IP Threats Method
@@ -468,13 +466,14 @@ class Greip {
     }
 
     final localParams = {
-      'ip': ip,
       'mode': mode.value.toLowerCase(),
       'source': 'Flutter-SDK',
     };
 
     return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/threats'), token: token!, query: localParams);
+        uri: Uri.parse('$baseUrl/score/ip/${Uri.encodeComponent(ip)}'),
+        token: token!,
+        query: localParams);
   }
 
   /// Country Lookup Method
@@ -525,7 +524,6 @@ class Greip {
     }
 
     final localParams = {
-      'CountryCode': countryCode,
       'params': tempParamsString,
       'lang': lang.value.toUpperCase(),
       'mode': mode.value.toLowerCase(),
@@ -533,7 +531,10 @@ class Greip {
     };
 
     return APIService.instance.getMethod(
-        uri: Uri.parse('$baseUrl/Country'), token: token!, query: localParams);
+        uri: Uri.parse(
+            '$baseUrl/lookup/countries/${Uri.encodeComponent(countryCode)}'),
+        token: token!,
+        query: localParams);
   }
 
   /// ASN Lookup Method
@@ -573,13 +574,11 @@ class Greip {
     }
 
     final localParams = {
-      'asn': asn,
-      'isList': isList ? 'yes' : 'no',
       'mode': mode.value.toLowerCase(),
       'source': 'Flutter-SDK',
     };
 
-    var uri = Uri.parse('$baseUrl/ASNLookup');
+    var uri = Uri.parse('$baseUrl/lookup/asn/${Uri.encodeComponent(asn)}');
 
     return APIService.instance
         .getMethod(uri: uri, token: token!, query: localParams);
