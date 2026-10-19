@@ -1,3 +1,15 @@
+## 2.0.0 — 2026-03-19
+
+### Breaking
+
+- Targets **Greip API v2** (`https://v2.greipapi.com`) with **Bearer** authorization via `setToken`.
+- HTTP routes and methods updated (lookup, IP score / threats, bulk, country, ASN, profanity POST, payments POST, etc.).
+- Responses use the v2 envelope: `success`, `data`, `execution_ms` — read fields from `result['data']` (`ip.address`, `geo.country_code`, `is_valid`, `risk_level`, …).
+
+### Added
+
+- Live integration tests including `threats()`.
+
 ## 1.1.0
 
 - BaseURL changed from `gregeoip.com` to `greipapi.com`

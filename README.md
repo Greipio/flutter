@@ -29,7 +29,7 @@ To use the package in your Flutter project, just add it as a dependency in your 
 
 ```yaml
 dependencies:
-  greip: ^1.1.0 # use the latest pub release; v2 API support ships in 2.x (see below)
+  greip: ^2.0.0
 ```
 
 Then run:
@@ -40,9 +40,9 @@ flutter pub get
 
 ## Greip API v2
 
-The package on **`main`** targets **[Greip API v2](https://v2.greipapi.com)** (`Bearer` token via `setToken`). Each method returns the full JSON body: `success`, `data`, and `execution_ms`. Read v2 fields from **`result['data']`** (for example `data['ip']['address']`, `data['geo']['country_code']`, `data['is_valid']`, `data['risk_level']`).
+**`greip` 2.x** targets **[Greip API v2](https://v2.greipapi.com)** (`Bearer` token via `setToken`). Each method returns the full JSON body: `success`, `data`, and `execution_ms`. Read v2 fields from **`result['data']`** (for example `data['ip']['address']`, `data['geo']['country_code']`, `data['is_valid']`, `data['risk_level']`).
 
-See [CHANGELOG.md](./CHANGELOG.md) for release history. Prefer **`Mode.live`** in production; **`Mode.test`** returns fake data.
+See [CHANGELOG.md](./CHANGELOG.md). Prefer **`Mode.live`** in production; **`Mode.test`** returns fake data.
 
 ## Usage
 
